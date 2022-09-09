@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+$Cyan: hsl(179, 62%, 43%);
+$LightCyan: hsl(179, 62%, 47%);
+$BrightYellow: hsl(71, 73%, 54%);
+$LightGray: hsl(204, 43%, 93%);
+$GrayishBlue: hsl(218, 22%, 67%);
+
+@mixin flex {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+    // border: 1px solid red;
+    // background-color: hsla(100, 100%, 50%, 0.1);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: $LightGray;
+}
+
+.grid {
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    border-radius: .6rem;
+    overflow: hidden;
+    &__join {
+        @include flex;
+        padding: 2rem;
+        background-color: white;
+        h2 {
+            color: $Cyan;
+        }
+        h3 {
+            color: $BrightYellow;
+        }
+        p {
+            line-height: 1.5;
+            color: $GrayishBlue;
+        }
+    }
+    &__pricing {
+        @include flex;
+        padding: 2rem;
+        background-color: $Cyan;
+        color: white;
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        h3 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 2rem;
+            span {
+                font-size: 1rem;
+                font-weight: 100;
+                color: $LightGray;
+            }
+        }
+        button {
+            padding: 1rem;
+            background-color: $BrightYellow;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: .5rem;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+    }
+    &__details {
+        @include flex;
+        padding: 2rem;
+        background-color: $LightCyan;
+        h2 {
+            color: white;
+        }
+        ul {
+            color: $LightGray;
+            font-weight: 300;
+            list-style: none;
+            li {
+                margin: .3rem 0;
+            }
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 700px;
+        &__join {
+            flex-basis: 100%;
+        }
+        &__pricing {
+            flex-basis: 50%;
+        }
+        &__details {
+            flex-basis: 50%;
+        }
+    }
+}
